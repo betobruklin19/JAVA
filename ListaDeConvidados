@@ -1,0 +1,137 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class ListaConvidados {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> listaDeConvidados = new ArrayList<String>();
+        gerenciarConvidados(listaDeConvidados); 
+    }
+    
+    public static void gerenciarConvidados(ArrayList<String> listaDeConvidados){
+        
+        try { 
+           
+            Scanner menu = new Scanner(System.in);    
+        Integer opcao;
+        
+        do {
+                    
+        System.out.print("--------------- Menu -------------- \n");
+        System.out.print("|-----------------------------|\n");
+        System.out.print("| Opção 1 - Cadastrar Participante |\n");
+        System.out.print("| Opção 2 - Remover por Posição |\n");
+        System.out.print("| Opção 3 - Remover por Nome |\n");
+        System.out.print("| Opção 4 - Listar Participantes |\n");
+        System.out.print("| Opção 5 - Pesquisar Participante |\n");
+        System.out.print("| Opção 6 - Ordenar Lista por Ordem Alfabética |\n");
+        System.out.print("| Opção 7 - Limpar Lista |\n");
+        System.out.print("| Opção 8 - Sair do Programa |\n");
+        System.out.print("|-----------------------------|\n");
+        System.out.print("Digite uma opção: ");
+            
+            opcao = menu.nextInt();
+            
+            if(opcao >= 1 && opcao < 9){
+            switch (opcao) {
+        case 1:
+            System.out.print("\nOpção CADASTRAR PARTICIPANTE Selecionada\n");
+            System.out.println("Informe o nome, convidado!");
+            System.out.println("Digite o nome: ");
+            Scanner sc1 = new Scanner (System.in);
+                                
+            String convidado = sc1.nextLine();
+            listaDeConvidados.add(convidado);
+                    
+            System.out.println("Convidado cadastrado com sucesso!");
+            break;
+                
+        case 2:
+            System.out.print("\nOpção REMOVER POR POSIÇÃO Selecionada\n");
+            Scanner sc2 = new Scanner (System.in);
+            int posicao = sc2.nextInt();
+                   
+            
+            if(posicao < listaDeConvidados.size()){
+                listaDeConvidados.remove(posicao);
+                System.out.println("Convidado removido com sucesso. ");
+            } else {
+                System.out.println("Convidado não encontrado.");
+            }
+            break;
+        
+        case 3:
+            System.out.print("\nOpção REMOVER POR NOME Selecionada\n");
+            System.out.println("Digite o nome do convidado que deseja remover: ");
+            Scanner sc3 = new Scanner (System.in);
+            String procura = sc3.next();
+          
+            if(listaDeConvidados.contains(procura)){
+                listaDeConvidados.remove(procura);
+                System.out.println("Convidado removido com sucesso. ");
+            } else {
+                System.out.println("Convidado não encontrado.");
+            }
+            break;
+        
+        case 4:
+            System.out.print("\nOpção LISTAR PARTICIPANTES Selecionada\n");
+            System.out.println(listaDeConvidados);
+            for(String element : listaDeConvidados){
+                System.out.println(element);   
+            }
+            break;
+
+        case 5:
+            System.out.print("\nOpção PESQUISAR PARTICIPANTE Selecionada\n");
+            Scanner sc5 = new Scanner (System.in);
+            String pesquisa = sc5.next();
+          
+            if(listaDeConvidados.contains(pesquisa)){
+                System.out.println("Resultado da pesquisa: ");
+                System.out.println(pesquisa);
+                    
+            } else {
+                System.out.println("Convidado não encontrado.");
+            }
+                   
+            break;
+
+        case 6:
+            System.out.print("\nOpção ORDENAR LISTA POR ORDEM ALFABÉTICA Selecionada\n");
+            Collections.sort(listaDeConvidados);
+            System.out.println(listaDeConvidados);
+
+            break;
+
+        case 7:
+            System.out.print("\nOpção LIMPAR LISTA Selecionada\n");
+            listaDeConvidados.removeAll(listaDeConvidados);
+            System.out.println("Lista apagada com sucesso.");
+            break;    
+            
+        default:
+            System.out.print("\nOpção Inválida!");
+            break;    
+        case 8:
+            System.out.print("\nPrograma Encerrado. Até logo!");
+		
+		menu.close();
+	}
+        }else {
+            System.out.println("Opção inválida. Digite as opções de 1 a 8. ");
+            
+        }
+    }while (opcao != 8);
+            
+        } catch(Exception error) {
+            System.out.println("Opção inválida. Digite uma das opções acima!");
+            gerenciarConvidados(listaDeConvidados);
+        }  
+        
+        }
+
+}
