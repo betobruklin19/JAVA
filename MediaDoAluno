@@ -1,0 +1,50 @@
+
+import java.util.Scanner;
+
+public class MediaAlunoo {
+	
+    public static void main(String[] args) {
+        
+      Scanner teclado = new Scanner(System.in);
+      
+      double nota1, nota2, nota3, media;
+      
+      System.out.println("Cálculo de média de um aluno.");
+      System.out.println("----------------------------");
+      System.out.println("Digite a primeira nota: ");
+      
+      nota1 = teclado.nextDouble();
+      
+      System.out.println("Digite a segunda nota: ");
+      
+      nota2 = teclado.nextDouble();
+      
+      System.out.println("Digite a terceira nota: ");
+      
+      nota3 = teclado.nextDouble();
+      
+      media = (nota1 + nota2 + nota3)/ (3);
+      
+      System.out.println("");
+
+      System.out.printf("MÉDIA: %.2f%n", media );
+      
+        if(media >= 7){
+
+            System.out.println("SITUAÇÃO DO ALUNO: Aprovado.");
+            System.out.println("Parabéns!!!");    
+        
+        } else if (media >=4){
+            System.out.println("SITUAÇÃO DO ALUNO: Recuperação.");
+        } else {
+
+            System.out.println("SITUAÇÃO DO ALUNO: Reprovado.");
+            System.out.println("Boa sorte na próxima vez :]");
+        }
+       
+        System.out.println("");
+        
+        teclado.close();
+    }
+    
+}
